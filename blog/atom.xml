@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://robwittman.github.io/blog/blog</id>
+    <title>DevOps Today Blog</title>
+    <updated>2023-06-08T14:09:21.569Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://robwittman.github.io/blog/blog"/>
+    <subtitle>DevOps Today Blog</subtitle>
+    <icon>https://robwittman.github.io/blog/blog/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Hello, World]]></title>
+        <id>https://robwittman.github.io/blog/blog/index</id>
+        <link href="https://robwittman.github.io/blog/blog/index"/>
+        <updated>2023-06-08T14:09:21.569Z</updated>
+    </entry>
+</feed>
