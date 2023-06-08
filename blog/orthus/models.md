@@ -34,5 +34,21 @@ Orthus should now have an `Account` for the `Tenant`, as well as a set of `Crede
 
 At the moment, we're going to push any changes to the OCI directly to all connected tenants. Eventually, this ought to 
 respect `PackageRevision` instead, so that we can push updates to environments individually, to allow for different 
-cadences or SLAs.
+cadences or SLAs
 
+## Thoughts 
+I _really_ want to use [Cluster API] for the deployment of the managed Kubernetes clusters. If we do, it will be done through Crossplane 
+rather than creating the manifests separately. I need to weight the pros and cons, as it brings in more abstraction, as well as needing 
+to configure provider resources for both Crossplane and ClusterAPI. But, its super neat, so there's that.
+
+## Users / Access
+Looking at the access levels of Orthus, we want a few different modules to differing clients
+- `Api`: Used by the calling application to perform CRUD operations on objects inside Orthus
+- `Webhooks`: Alternative method for clients to trigger tenant operations. For example, folks might want to provision something anytime someone signs up in Auth0. This prevents writing glue code just to transmit those events to Orthus
+- `Admin`: For super users, either direct username / password login, or an Identity Provider like Okta / Auth0. For folks with administrator access that need to inspect or troubleshoot resources and operations
+- `Tenant`: Access to a specific tenant (maybe white labeling?) for clients on that tenant to view status, request support, push updates, etc 
+
+Note on above: At the moment, I don't have plans for tenants to have an individual database. They'll be namespaced in various tables by the `tenant_id`. 
+
+## Background Job Processing
+Catalog jobs in Tekton? Generic jobs in Sidekiq? Not sure yet

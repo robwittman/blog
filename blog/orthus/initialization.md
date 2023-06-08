@@ -50,14 +50,20 @@ production:
 ```
 
 Setup our ENV file
+
+Install https://github.com/bkeepers/dotenv 
 ``` 
+# .env 
 DATABASE_URL=postgresql://postgres:password@127.0.0.1:5432/orthus_development
 ```
 
 ## Verify we can run the server 
 ```shell 
 docker compose up -d
+rails db:create 
+rails db:migrate
 bin/dev 
 ```
 
-If we open our browser at http://localhost:3000, we can load our application, and its connected to our database. Easy enough
+If we open our browser at http://localhost:3000, we can load our application, and its connected to our database. Easy enough.
+Push these changes to Github, then we'll step back and iron out the details of what we're trying to do
